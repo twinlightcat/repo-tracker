@@ -32,7 +32,7 @@ const UserRepos: React.FC = () => {
   return (
     <div className="mb-8">
       <h2 className="text-xl font-semibold text-gray-800">Your Repositories</h2>
-      {error && (
+      {error && error.status !== 404 && (
         <div className="mt-4 text-red-500 text-center">
           Error: {error.message}
         </div>
@@ -77,8 +77,10 @@ const UserRepos: React.FC = () => {
         </div>
       )}
       {repos.length === 0 && !isFetching && (
-        <div className="mt-4 text-gray-500 text-center">
-          No user repositories created.
+        <div className="mt-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div className="p-8 text-gray-500 text-center">
+            No user repositories created.
+          </div>
         </div>
       )}
     </div>

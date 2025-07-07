@@ -23,7 +23,7 @@ Repo Tracker is a desktop application for browsing GitHub repositories and their
 ## Getting Started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [Node.js](https://nodejs.org/) (v20 or higher recommended)
 
 ### Installation
 

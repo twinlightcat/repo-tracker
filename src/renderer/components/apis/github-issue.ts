@@ -53,13 +53,15 @@ const fetchAllGitHubIssues = async (
 };
 
 export const useGetGitHubIssues = (owner: string, repo: string) => {
+  // Get the personal access token from context
   const { pat } = usePat();
 
   return useQuery({
     queryKey: [keyGithubIssue, owner, repo],
     queryFn: () => fetchAllGitHubIssues(pat, owner, repo),
     enabled: !!pat && !!owner && !!repo,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 5 * 60 * 1000, // cache for 5 minutes
+    refetchOnWindowFocus: true,
     retry: 1,
   });
 };

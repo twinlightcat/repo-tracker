@@ -121,8 +121,7 @@ const RepoSearch: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => setShowDropdown(!!debouncedSearchTerm)}
             onBlur={() => {
-              // Slightly longer delay to allow mouse hold
-              setTimeout(() => setShowDropdown(false), 300);
+              setShowDropdown(false);
             }}
             className="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
           />
@@ -141,7 +140,7 @@ const RepoSearch: React.FC = () => {
                     key={repo.id}
                     onMouseDown={() =>
                       handleRepoSelect(repo.owner.login, repo.name)
-                    } // Changed to onMouseDown
+                    }
                     className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-gray-800 transition-colors duration-150"
                   >
                     <div className="flex justify-between items-center">
@@ -227,7 +226,7 @@ const RepoSearch: React.FC = () => {
           View Issues
         </Button>
       </div>
-      {error && (
+      {error && error.status !== 404 && (
         <div className="mt-4 text-red-500 text-center">
           Error: {error.message}
         </div>

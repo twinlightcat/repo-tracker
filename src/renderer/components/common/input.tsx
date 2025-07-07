@@ -5,13 +5,15 @@ type InputProps = {
   label: string;
   type?: "text" | "email" | "password";
   value?: string;
+  disabled?: boolean;
   onChange?: (value: string) => void;
   prefix?: string;
   placeholder?: string;
 };
 
 function Input(props: InputProps) {
-  const { id, label, prefix, placeholder, value, onChange, type } = props;
+  const { id, label, prefix, placeholder, value, onChange, type, disabled } =
+    props;
   return (
     <div className="sm:col-span-4">
       <label htmlFor={id} className="block text-sm/6 font-medium text-gray-900">
@@ -26,6 +28,7 @@ function Input(props: InputProps) {
             id={id}
             name={id}
             type={type || "text"}
+            disabled={disabled}
             placeholder={placeholder}
             className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
             value={value}

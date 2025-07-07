@@ -22,6 +22,7 @@ export const fetchGitHubOrgs = async (token: string): Promise<GitHubOrg[]> => {
 };
 
 const useGetGitHubOrgs = () => {
+  // Get the personal access token from context
   const { pat } = usePat();
 
   return useQuery({

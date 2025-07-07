@@ -35,6 +35,7 @@ const fetchOrgRepos = async (
 };
 
 const useSearchOrgRepos = (org: string, { enabled = true } = {}) => {
+  // Get the personal access token from context
   const { pat } = usePat();
 
   return useQuery({
