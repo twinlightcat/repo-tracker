@@ -21,9 +21,9 @@ const Button: React.FC<ButtonProps> = ({
     "inline-flex items-center justify-center font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-500";
 
   const variantStyles = {
-    primary: "bg-amber-400 text-white hover:bg-gold-600 active:bg-gold-700",
+    primary: "bg-amber-400 text-white hover:bg-amber-500 active:bg-amber-700",
     secondary:
-      "border-2 border-gold-500 text-gold-500 bg-transparent hover:bg-gold-50 active:bg-gold-100",
+      "border-2 border-amber-400 text-amber-400 bg-transparent hover:bg-amber-50 active:bg-amber-100",
   };
 
   const sizeStyles = {

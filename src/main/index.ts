@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain, shell } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 
@@ -60,5 +60,15 @@ app.on("activate", () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+const openExternal = (url: string) => {
+  if (!url.startsWith("http")) {
+    throw new Error("Invalid URL");
+  }
+  shell.openExternal(url).catch((error) => {
+    console.error("Failed to open external URL:", error);
+  });
+};
+
+ipcMain.on("open-external", (_, url: string) => {
+  openExternal(url);
+});

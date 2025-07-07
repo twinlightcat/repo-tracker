@@ -6,7 +6,7 @@ Repo Tracker is a desktop application for browsing GitHub repositories and their
 
 - **Repository Search:** Quickly search for repositories by name or organization.
 - **Repository List:** View your own repositories
-- **Issue Tracking:** Browse issues for any repository, filter by title or creator, and view issue details.
+- **Issue Tracking:** Browse issues for any repository, filter by title or creator.
 - **Pagination:** Easily navigate through large lists of issues with pagination controls.
 - **Authentication:** Uses GitHub Personal Access Token (PAT) for secure API access (see setup below).
 
