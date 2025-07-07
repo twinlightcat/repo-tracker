@@ -58,13 +58,6 @@ The app will launch in a new window.
 - **Click "View Issues"** to browse issues for a repository.
 - **Filter issues** by title or creator, and use pagination to navigate.
 
-## Tailwind CSS
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for utility-first styling.  
-- For documentation and examples, visit the [Tailwind CSS Docs](https://tailwindcss.com/docs).
-- **Editor Recommendation:**  
-  For the best development experience, install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension in VS Code. This provides autocomplete, syntax highlighting, and linting for Tailwind classes.
-
 ## Project Structure
 
 ```
@@ -90,7 +83,21 @@ repo-tracker/
 - **Vite** for development and building
 - **TypeScript** for type safety
 - **Tailwind CSS** for utility-first styling
+- **React Query** for data fetching and caching
 - **GitHub REST API** for getting the data
+
+### Tailwind CSS
+
+This project uses [Tailwind CSS](https://tailwindcss.com/) for utility-first styling.  
+- For documentation and examples, visit the [Tailwind CSS Docs](https://tailwindcss.com/docs).
+- **Editor Recommendation:**  
+  For the best development experience, install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension in VS Code. This provides autocomplete, syntax highlighting, and linting for Tailwind classes.
+
+### React Query
+
+ [React Query](https://tanstack.com/query/latest) (TanStack Query) for efficient data fetching, caching, and state management of GitHub API data in the renderer process.  
+- React Query helps keep UI in sync with server state, handles background updates, and provides built-in support for caching.
+- For more information and advanced usage, see the [React Query Documentation](https://tanstack.com/query/latest/docs/react/overview).
 
 ## License
 
