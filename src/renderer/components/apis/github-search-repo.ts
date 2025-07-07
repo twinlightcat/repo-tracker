@@ -53,13 +53,14 @@ const fetchGitHubRepos = async (
 };
 
 const useSearchGitHubRepos = (query: string, { enabled = true } = {}) => {
+  // Get the personal access token from context
   const { pat } = usePat();
 
   return useQuery({
     queryKey: [keyGitHubRepoSearch, query],
     queryFn: () => fetchGitHubRepos(pat, query),
     enabled: !!pat && !!query.trim() && enabled, // Only fetch if query is non-empty
-    staleTime: 5 * 60 * 1000, // Cache for 5 minutes
+    staleTime: 3 * 60 * 1000, // Cache for 3 minutes
     retry: 1,
   });
 };

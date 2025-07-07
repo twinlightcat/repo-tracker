@@ -30,6 +30,7 @@ const fetchUserRepos = async (token: string): Promise<GitHubRepoResponse> => {
 };
 
 const useGetUserRepos = () => {
+  // Get the personal access token from context
   const { pat } = usePat();
 
   return useQuery({
@@ -37,6 +38,7 @@ const useGetUserRepos = () => {
     queryFn: () => fetchUserRepos(pat),
     enabled: !!pat, // Only fetch if PAT is available
     staleTime: 5 * 60 * 1000, // Cache for 5 minutes
+    refetchOnWindowFocus: true,
     retry: 1,
   });
 };
