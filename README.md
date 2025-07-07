@@ -58,14 +58,21 @@ The app will launch in a new window.
 - **Click "View Issues"** to browse issues for a repository.
 - **Filter issues** by title or creator, and use pagination to navigate.
 
+## Tailwind CSS
+
+This project uses [Tailwind CSS](https://tailwindcss.com/) for utility-first styling.  
+- For documentation and examples, visit the [Tailwind CSS Docs](https://tailwindcss.com/docs).
+- **Editor Recommendation:**  
+  For the best development experience, install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension in VS Code. This provides autocomplete, syntax highlighting, and linting for Tailwind classes.
+
 ## Project Structure
 
 ```
 repo-tracker/
 ├── src/
 │   ├── main/           # Electron main process
-│   ├── preload.ts      # Electron preload script
 │   ├── types/          # TypeScript types    
+│   ├── preload.ts      # Electron preload script
 │   └── renderer/       # React renderer process
 │       ├── components/ # UI components (APIs, content, hooks)
 │       ├── pages/      # Page components (home, issues)
@@ -82,8 +89,8 @@ repo-tracker/
 - **React** for UI
 - **Vite** for development and building
 - **TypeScript** for type safety
+- **Tailwind CSS** for utility-first styling
 - **GitHub REST API** for getting the data
-
 
 ## License
 
