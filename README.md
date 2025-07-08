@@ -38,7 +38,6 @@ Repo Tracker is a desktop application for browsing GitHub repositories and their
    ```
 3. **Set up your GitHub Personal Access Token (PAT):**
    - On bootup the application will ask for the PAT
-       - NOTE: Currently is session based, so will need to re-enter on app open 
    - To setup https://github.com/settings/personal-access-tokens
         - The PAT should have **All repositories** with **Issues** at a `read-only` scope for full functionality.
 
