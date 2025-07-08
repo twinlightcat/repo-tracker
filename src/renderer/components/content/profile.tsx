@@ -21,7 +21,7 @@ export default function Profile() {
   const { user } = data;
 
   return (
-    <a href="#" className="group block shrink-0">
+    <span className="group block shrink-0">
       <div className="flex items-center">
         <div>
           <img
@@ -42,6 +42,6 @@ export default function Profile() {
           </a>
         </div>
       </div>
-    </a>
+    </span>
   );
 }
