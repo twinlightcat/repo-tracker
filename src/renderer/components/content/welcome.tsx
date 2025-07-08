@@ -27,7 +27,7 @@ function Welcome() {
           setInputValue("");
           setIsSubmitting(false);
           setError(
-            "Failed a validation fetch to GitHub Orgs. Please check your token and try again.",
+            "Failed a validation fetch to GitHub User. Please check your token and try again.",
           );
         });
     },
