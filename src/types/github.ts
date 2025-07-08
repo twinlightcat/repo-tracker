@@ -15,7 +15,7 @@ export interface GitHubOrg {
   description: string | null;
 }
 
-interface GitHubUser {
+export interface GitHubUser {
   login: string;
   id: number;
   node_id: string;

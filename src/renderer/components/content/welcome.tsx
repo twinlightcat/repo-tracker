@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { usePat } from "../hooks/use-pat";
-import { fetchGitHubOrgs } from "../apis/github-orgs";
+import { fetchUser } from "../apis/github-user";
 import Input from "../common/input";
 import Button from "../common/button";
 
@@ -17,7 +17,7 @@ function Welcome() {
       }
 
       setIsSubmitting(true);
-      fetchGitHubOrgs(inputValue)
+      fetchUser(inputValue)
         .then(() => {
           setPat(inputValue);
           setInputValue(""); // Clear input after setting token

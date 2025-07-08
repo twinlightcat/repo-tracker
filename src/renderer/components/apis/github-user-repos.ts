@@ -19,7 +19,6 @@ const fetchUserRepos = async (token: string): Promise<GitHubRepoResponse> => {
         "X-GitHub-Api-Version": "2022-11-28",
       },
       params: {
-        per_page: 5, // Limit to top 5 repos
         sort: "updated", // Sort by recently updated
       },
     },
