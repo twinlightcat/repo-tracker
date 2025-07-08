@@ -35,6 +35,7 @@ export default function Profile() {
             {user.login}
           </p>
           <a
+            href="#"
             className="text-xs font-medium text-gray-500 group-hover:text-gray-700"
             onClick={handleLogout}
           >
