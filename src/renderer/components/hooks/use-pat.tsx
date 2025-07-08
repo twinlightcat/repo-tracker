@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 type PatContextType = {
   pat: string | null;
   setPat: (newPat: string | null) => void;
+  deletePat: () => void;
 };
 const PatContext = React.createContext<PatContextType | undefined>(undefined);
 
@@ -11,21 +12,26 @@ function PatProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const fetchPat = async () => {
-      const storedPat = sessionStorage.getItem("pat");
+      const storedPat = localStorage.getItem("pat");
       setPatState(storedPat);
     };
 
     fetchPat();
   }, []);
 
-  // Function to set token in state and sessionStorage
+  // Function to set token in state and localStorage
   const setPat = useCallback((newToken: string) => {
     setPatState(newToken);
-    sessionStorage.setItem("pat", newToken);
+    localStorage.setItem("pat", newToken);
+  }, []);
+
+  const deletePat = useCallback(() => {
+    setPatState("");
+    localStorage.setItem("pat", "");
   }, []);
 
   return (
-    <PatContext.Provider value={{ pat, setPat: setPat }}>
+    <PatContext.Provider value={{ pat, setPat: setPat, deletePat }}>
       {children}
     </PatContext.Provider>
   );
