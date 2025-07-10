@@ -2,7 +2,7 @@ import React from "react";
 import RepoSearch from "../components/content/repo-search";
 import { usePat } from "../components/hooks/use-pat";
 import Welcome from "../components/content/welcome";
-import UserRepos from "../components/content/user-repos";
+import UserRepos from "../components/content/user-repo";
 
 function Root() {
   const { pat } = usePat();

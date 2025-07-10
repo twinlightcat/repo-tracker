@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router";
-
-import { keyGithubIssue } from "../apis/github-issue";
-import useGetUserRepos from "../apis/github-user-repos";
 import { useQueryClient } from "@tanstack/react-query";
-import Button from "../common/button";
+
+import { keyGithubIssue } from "../../apis/github-issue";
+import useGetUserRepos from "../../apis/github-user-repos";
+import Button from "../../common/button";
+import Card from "../../common/card";
+import SkeletonRepoCard from "./skeleton-repo-card";
 
 const UserRepos: React.FC = () => {
   const navigate = useNavigate();
@@ -37,13 +39,18 @@ const UserRepos: React.FC = () => {
           Error: {error.message}
         </div>
       )}
+      {repos.length === 0 && isFetching && (
+        <div className="mt-6 w-full grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-2">
+          <SkeletonRepoCard />
+          <SkeletonRepoCard />
+          <SkeletonRepoCard />
+        </div>
+      )}
+
       {repos.length > 0 && (
         <div className="mt-6 w-full grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-2">
           {repos.map((repo) => (
-            <div
-              key={repo.id}
-              className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
-            >
+            <Card key={repo.id}>
               <div className="flex justify-between items-center">
                 <div>
                   <h3 className="text-base font-semibold text-gray-900">
@@ -72,7 +79,7 @@ const UserRepos: React.FC = () => {
                   </Button>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       )}
