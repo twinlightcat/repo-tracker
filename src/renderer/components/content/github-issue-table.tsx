@@ -6,6 +6,7 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { ClipboardDocumentListIcon } from "@heroicons/react/20/solid";
 import { GitHubIssue } from "../../../types/github";
 import Button from "../../components/common/button";
 import Spinner from "../common/spinner";
@@ -15,27 +16,10 @@ interface GitHubIssueTableProps {
   isFetching?: boolean;
 }
 
-const ClipBoardIcon = () => (
-  <svg
-    className="w-16 h-16 text-gray-400 mb-4"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2 Sist:2h2a2 2 0 012 2"
-    />
-  </svg>
-);
-
 const NoIssuesFound = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full bg-white p-8 text-center">
-      <ClipBoardIcon />
+      <ClipboardDocumentListIcon className="w-16 h-16 text-gray-400 mb-4" />
       <h3 className="text-lg font-semibold text-gray-900 mb-2">
         No Issues Found
       </h3>
