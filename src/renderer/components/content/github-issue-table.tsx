@@ -32,6 +32,29 @@ const ClipBoardIcon = () => (
   </svg>
 );
 
+const NoIssuesFound = () => {
+  return (
+    <div className="flex flex-col items-center justify-center h-full bg-white p-8 text-center">
+      <ClipBoardIcon />
+      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        No Issues Found
+      </h3>
+      <p className="text-gray-500">
+        There are currently no issues to display. Try adjusting your search or
+        filters.
+      </p>
+    </div>
+  );
+};
+
+const LoadingTableBody = () => {
+  return (
+    <div className="flex items-center justify-center h-full bg-white p-8">
+      <Spinner size="lg" />
+    </div>
+  );
+};
+
 const columnHelper = createColumnHelper<GitHubIssue>();
 
 const columns = [
@@ -167,61 +190,47 @@ const GitHubIssueTable: React.FC<GitHubIssueTableProps> = ({
         </select>
       </div>
       <div className="flex-1 overflow-hidden rounded-lg shadow-lg">
-        {filteredIssues.length === 0 && !isFetching ? (
-          <div className="flex flex-col items-center justify-center h-full bg-white p-8 text-center">
-            <ClipBoardIcon />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              No Issues Found
-            </h3>
-            <p className="text-gray-500">
-              There are currently no issues to display. Try adjusting your
-              search or filters.
-            </p>
-          </div>
-        ) : (
-          <div className="max-h-[calc(100vh-386px)] overflow-y-auto custom-scrollbar">
-            <table className="min-w-full bg-white">
-              <thead className="bg-gray-800 text-white sticky top-0 z-10">
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => (
-                      <th
-                        key={header.id}
-                        className="px-6 py-3 text-left text-sm font-semibold tracking-wider"
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {table.getRowModel().rows.map((row) => (
-                  <tr
-                    key={row.id}
-                    className="hover:bg-gray-50 transition-colors"
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <td
-                        key={cell.id}
-                        className="px-6 py-4 text-sm text-gray-700"
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+        <div className="max-h-[calc(100vh-386px)] overflow-y-auto custom-scrollbar">
+          <table className="min-w-full bg-white">
+            <thead className="bg-gray-800 text-white sticky top-0 z-10">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th
+                      key={header.id}
+                      className="px-6 py-3 text-left text-sm font-semibold tracking-wider"
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {table.getRowModel().rows.map((row) => (
+                <tr key={row.id} className="hover:bg-gray-50 transition-colors">
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      key={cell.id}
+                      className="px-6 py-4 text-sm text-gray-700"
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+      {filteredIssues.length === 0 && !isFetching && <NoIssuesFound />}
+      {isFetching && filteredIssues.length === 0 && <LoadingTableBody />}
       {filteredIssues.length > 0 && (
         <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
@@ -263,11 +272,6 @@ const GitHubIssueTable: React.FC<GitHubIssueTableProps> = ({
           </div>
         </div>
       )}
-      {isFetching && filteredIssues.length === 0 ? (
-        <div className="flex items-center justify-center h-full bg-white p-8">
-          <Spinner size="lg" />
-        </div>
-      ) : null}
     </div>
   );
 };
