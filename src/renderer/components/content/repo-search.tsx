@@ -116,7 +116,7 @@ const RepoSearch: React.FC = () => {
         <div className="relative flex-grow">
           <input
             type="text"
-            placeholder="repo, org/repo (e.g., github/docs)"
+            placeholder="repo, org/repo (e.g., TanStack/query)"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => setShowDropdown(!!debouncedSearchTerm)}
