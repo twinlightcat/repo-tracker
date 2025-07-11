@@ -179,7 +179,7 @@ const GitHubIssueTable: React.FC<GitHubIssueTableProps> = ({
             </p>
           </div>
         ) : (
-          <div className="max-h-[calc(100vh-340px)] overflow-y-auto custom-scrollbar">
+          <div className="max-h-[calc(100vh-386px)] overflow-y-auto custom-scrollbar">
             <table className="min-w-full bg-white">
               <thead className="bg-gray-800 text-white sticky top-0 z-10">
                 {table.getHeaderGroups().map((headerGroup) => (
