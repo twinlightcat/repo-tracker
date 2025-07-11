@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import useGetUser, { keyGitHubUser } from "../apis/github-user";
-import { usePat } from "../hooks/use-pat";
+import useGetUser, { keyGitHubUser } from "../../apis/github-user";
+import { usePat } from "../../hooks/use-pat";
+import SkeletonProfile from "./skeleton-profile";
 
 export default function Profile() {
   const { deletePat } = usePat();
-  const { data } = useGetUser();
+  const { data, isLoading } = useGetUser();
   const queryClient = useQueryClient();
 
   const handleLogout = useCallback(() => {
@@ -15,9 +16,14 @@ export default function Profile() {
     deletePat();
   }, [queryClient, deletePat]);
 
-  if (!data?.user?.id) {
+  if (!data?.user?.id && !isLoading) {
     return null;
   }
+
+  if (!data?.user?.id && isLoading) {
+    return <SkeletonProfile />;
+  }
+
   const { user } = data;
 
   return (
